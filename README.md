@@ -62,21 +62,9 @@ Estimates the increase in Pro upgrades if landing page conversion improves by 10
 
 ---
 
-## 📊 Tableau Dashboard (Optional)
-
-If you're using Tableau:
-- Export the final DataFrame using `df.to_csv('processed_data.csv')`
-- Load it into Tableau to create:
-  - KPI Cards (Churn, ARPU, Time to Upgrade)
-  - Customer Map by Country
-  - Retention Curve by Cohort or Engagement Level
-  - A/B Test Results Summary
-
----
-
 ## 📬 Contact
 
-For questions or feedback, please contact the project maintainer.
+For questions or feedback, please contact eddyjmaina2003@gmail.com
 
 ---
 
