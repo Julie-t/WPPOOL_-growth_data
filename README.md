@@ -17,7 +17,7 @@ The core analysis is implemented in the Jupyter Notebook: **`solution.ipynb`**.
 ## 📂 Files
 
 - `solution.ipynb`: Main analysis notebook with preprocessing, KPI tracking, visualizations, and A/B testing simulation
-- `wppool_growth_data_sample_20k.csv`: Sample user dataset (not included here but required)
+- `wppool_growth_data_sample_20k.csv`: Sample user dataset
 
 
 ---
