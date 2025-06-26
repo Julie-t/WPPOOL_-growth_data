@@ -1,47 +1,87 @@
-# 📈 WPPOOL Conversion Optimization Analysis
+# 📊 WPPOOL User Growth & Conversion Analysis
 
-## 📝 Project Description
-
-This repository contains an end-to-end exploratory data analysis and simulation of user behavior on WPPOOL's platform, focusing on:
-
-- User conversion trends (Free → Pro)
-- Retention and churn behavior
-- Revenue analysis by plan type
-- A/B testing simulation to evaluate the impact of a landing page change
-- Scenario modeling for conversion improvement
-
-The core analysis is implemented in the Jupyter Notebook: **`solution.ipynb`**.
+This project presents an end-to-end data analysis solution for WPPOOL's 20K user dataset. It focuses on understanding user behavior, optimizing Free-to-Pro upgrades, analyzing churn, and simulating the impact of marketing improvements using Python and Tableau.
 
 ---
 
-## 📂 Files
+## 📁 Project File
 
-- `solution.ipynb`: Main analysis notebook with preprocessing, KPI tracking, visualizations, and A/B testing simulation
-- `wppool_growth_data_sample_20k.csv`: Sample user dataset
-
+- `solution.ipynb`: Main Jupyter Notebook containing all analysis, KPI calculations, A/B test simulations, and visual preparation steps.
 
 ---
 
-## 📊 Key Features
+## 🧾 Objectives
 
-### ✅ KPIs Tracked
-- **Churn Rate** (% of users who became inactive)
-- **ARPU** (Average Revenue Per User)
-- **Time to Upgrade** (Free to Pro)
+- Analyze WPPOOL’s user engagement and revenue trends.
+- Identify the drivers of churn and Pro upgrades.
+- Simulate the business impact of improving the landing page conversion rate.
+- Evaluate a proposed A/B test using statistical rigor.
+- Prepare Tableau-ready exports for visualization and reporting.
+
+---
+
+## 📊 Key Features Covered
+
+### 1. **Data Preparation**
+- Loaded dataset: `wppool_growth_data_sample_20k.csv`
+- Parsed and converted date fields: `install_date`, `last_active_date`, `pro_upgrade_date`
+- Filled missing values in `plan_type` as `"unknown"`
+- Created new fields:
+  - `upgraded_to_pro`: based on presence of `pro_upgrade_date`
+  - `days_retained` and `upgrade_time`: to measure engagement and upgrade behavior
+  - `engagement_level`: quantile-based binning from `total_sessions`
+
+---
+
+### 2. **KPI Calculation**
+- **Churn Rate** (overall & by subscription type)
+- **Average Revenue Per User (ARPU)**
+- **Upgrade Time** (from Free to Pro)
 - **Free-to-Pro Upgrade Rate**
-- **Top Plan Type by Revenue**
-- **Top Countries by Sessions**
-
-### 🔁 Retention Curve
-Analyzes average retention over time based on engagement levels and country.
-
-### 🧪 A/B Test Simulation
-A chi-square test evaluates if a 10% uplift in conversion is statistically significant.
-
-### 📈 Scenario Modeling
-Estimates the increase in Pro upgrades if landing page conversion improves by 10%.
+- **Top revenue-generating plan types**
+- **Top countries by sessions and upgrades**
 
 ---
+
+### 3. **User Engagement Analysis**
+- Identified top 5 most active users based on `total_sessions`
+- Country-level aggregation for total sessions and upgrade time
+- Binned engagement levels into `Low`, `Medium`, `High`, `Very High`
+- Computed average upgrade time by engagement level
+
+---
+
+### 4. **Conversion Scenario Simulation**
+
+## 📈 Scenario Modeling
+
+We simulated a 10% boost in landing page conversion rate:
+
+| Metric                  | Value    |
+|-------------------------|----------|
+| Current Free Users      | 5,000    |
+| New Free Users          | 5,500    |
+| Current Pro Upgrades    | 400      |
+| New Pro Upgrades        | 440      |
+| Increase in Pro Upgrades| **+40**  |
+
+
+## 5. 📊 A/B Testing Simulation
+
+A simulated **Chi-Square A/B test** was conducted to evaluate the effectiveness of a landing page variant.
+
+### 🔬 Scenario
+- **Control Group**: 5.0% conversion rate
+- **Test Group**: 5.6% conversion rate (a 12% relative lift)
+- Sample size: 50,000 users per group
+
+### 🧪 Method
+A reusable function was created to perform a Chi-Square test on conversion data
+
+*Conclusions & Next Steps**  
+    - Key insights on engagement, churn drivers, and conversion optimization  
+    - Recommendations for rolling out winning A/B variants  
+    - Suggestions for further analysis (power analysis, confidence intervals, multi-variant tests)
 
 ## 🧰 Tools Used
 
@@ -51,14 +91,13 @@ Estimates the increase in Pro upgrades if landing page conversion improves by 10
 - The dashboard link is attached https://public.tableau.com/app/profile/edna.maina/viz/GrowthDataDashboard_17507676712530/Dashboard1?publish=yes
 
 ---
+## 🚀 How to Reproduce
 
-## ▶️ How to Run
-
-1. Clone the repo or download the files
-2. Open `solution.ipynb` in Jupyter Notebook or VS Code
-3. Ensure the raw dataset (e.g., `wppool_growth_data_sample_20k.csv`) is in the same directory
-4. Run all cells step by step to generate outputs
-5. (Optional) Export cleaned data to `.csv` for Tableau
+1. Clone the repo  
+2. Run `preprocessing_notebook.ipynb` to clean and generate KPIs  
+3. Export cleaned data using `df.to_csv('processed_data.csv')`  
+4. Load `processed_data.csv` into Tableau  
+5. Explore dashboards in `wppool_dashboard.twbx`
 
 ---
 
